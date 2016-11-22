@@ -5,7 +5,7 @@ services:
     network_mode: "host"
     image: consul:v0.6.4
     ### https://www.consul.io/docs/agent/options.html
-    command: agent -ui -server -bootstrap-expect 1 -client=0.0.0.0 -bind=10.1.1.1 -data-dir=/consul/data
+    command: agent -ui -server -bootstrap-expect 1 -client=0.0.0.0 -bind=${ROJ_DISCOVERY_PRIVATE_IP} -advertise=${ROJ_DISCOVERY_PUBLIC_IP} -data-dir=/consul/data
     volumes:
       - /host-volume/consul/data:/consul/data
     ports:
